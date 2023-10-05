@@ -35,7 +35,7 @@ int main()
   int num_devices = omp_get_num_devices();
   printf("Number of available target devices %d\n", num_devices);
 
-  #pragma omp target teams distribute parallel for
+  #pragma omp target teams distribute parallel
   {
       if(omp_is_initial_device())
       {
