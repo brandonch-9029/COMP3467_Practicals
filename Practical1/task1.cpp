@@ -20,9 +20,9 @@
 //      5. Run the code:
 //          ./xtask1
 // c) Modify the code such that it runs with multiple threads per team. By means of which clause can you control the number of threads per team? 
-//    What happens if you do not specify this clause at all?
+//    What happens if you do not specify this clause at all? parallel
 // d) Modify the code such that it runs with multiple teams. By means of which clause can you control the number of teams?
-//    What happens if you do not specify this clause at all?
+//    What happens if you do not specify this clause at all? teams
 // e) Modify the code such that it runs with multiple teams *and* multiple threads per team. Does the order of the required directives matter?
 
 #include <stdio.h>
@@ -35,7 +35,7 @@ int main()
   int num_devices = omp_get_num_devices();
   printf("Number of available target devices %d\n", num_devices);
 
-  #pragma omp target teams distribute parallel
+  #pragma omp target parallel teams
   {
       if(omp_is_initial_device())
       {
@@ -44,13 +44,10 @@ int main()
       else{
           int num_teams= omp_get_num_teams();
           int num_threads_per_team = omp_get_num_threads();
-        #pragma omp single 
-        {
-            printf("Running on GPU with %d teams and %d threads per team\n", 
-            num_teams, 
-            num_threads_per_team
+          printf("Running on GPU with %d teams and %d threads per team\n", 
+          num_teams, 
+          num_threads_per_team
           );
-          }
       }
   }
 }
