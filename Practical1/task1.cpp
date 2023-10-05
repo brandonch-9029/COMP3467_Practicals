@@ -35,14 +35,14 @@ int main()
   int num_devices = omp_get_num_devices();
   printf("Number of available target devices %d\n", num_devices);
 
-  #pragma omp target
+  #pragma omp target teams
   {
       if(omp_is_initial_device())
       {
         printf("Running on CPU\n");    
       }
       else{
-        #pragma omp teams
+        #pragma omp parallel
         {
           int num_teams= omp_get_num_teams();
           int num_threads_per_team = omp_get_num_threads();
