@@ -52,7 +52,7 @@ void vector_add_gpu_teams_parallel_combined(double* X, double* Y, double* Z)
 
 void init(double* X, double* Y, double* Z)
 {
-	for(int i = 0; i < N; i++)
+	for(int i = 0; i < 9; i++)
 	{
 		X[i] = 1;
 		Y[i] = 1;
@@ -63,7 +63,7 @@ void init(double* X, double* Y, double* Z)
 void print_result(double* Z, const char* string)
 {
     printf("%s\n",string);
-    for(int i = 0; i < N; i++) printf("%lf ", Z[i]);
+    for(int i = 0; i < 9; i++) printf("%lf ", Z[i]);
 	printf("\n");
 }
 
