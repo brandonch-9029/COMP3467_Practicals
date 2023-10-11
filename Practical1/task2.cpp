@@ -36,7 +36,7 @@ void vector_add_cpu_parallel_for_combined(double* X, double* Y, double* Z)
 
 void vector_add_gpu_parallel_for_combined(double* X, double* Y, double* Z)
 {
-	// TODO
+	// TODO/
 }
 
 void vector_add_gpu_teams_distribute_combined(double* X, double* Y, double* Z)
