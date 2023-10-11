@@ -7,6 +7,9 @@
 //      - vector_add_gpu_teams_parallel_combined(...) shall run multiple threadblocks each with multiple threads
 //    Remember, that the memory of CPU and GPU are physically separated and accordingly explicit memory transfers are required.
 
+
+// nvc++ -fopenmp -mp=gpu task2.cpp -o xtask2
+
 #include <stdio.h>
 
 #define N 10
@@ -17,7 +20,7 @@ void vector_add_cpu_parallel_for(double* X, double* Y, double* Z)
 	#pragma omp parallel
 	{
 		#pragma omp for
-		for(int i = 0; i < 9; i++)
+		for(int i = 0; i < N; i++)
 		{
 			Z[i] = X[i] + Y[i];
 		}
@@ -28,7 +31,7 @@ void vector_add_cpu_parallel_for(double* X, double* Y, double* Z)
 void vector_add_cpu_parallel_for_combined(double* X, double* Y, double* Z)
 {
 	#pragma omp parallel for
-	for(int i = 0; i < 9; i++)
+	for(int i = 0; i < N; i++)
 	{
 		Z[i] = X[i] + Y[i];
 	}
@@ -36,7 +39,7 @@ void vector_add_cpu_parallel_for_combined(double* X, double* Y, double* Z)
 
 void vector_add_gpu_parallel_for_combined(double* X, double* Y, double* Z)
 {
-	// TODO
+	#pragma omp target parallel for 
 }
 
 void vector_add_gpu_teams_distribute_combined(double* X, double* Y, double* Z)
