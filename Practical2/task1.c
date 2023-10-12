@@ -32,7 +32,8 @@ int main(int argc, char** argv) {
         char message[] = "Hello World!\n";
         MPI_Send(&message, 14, MPI_UNSIGNED_CHAR, 1, 0, MPI_COMM_WORLD);
     } else if (rank == 1) {
-        char message[] = "";
+        char message[];
+        //
         MPI_Recv(&message, 14, MPI_UNSIGNED_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         printf("The message is:\n%s",&message);
     }
