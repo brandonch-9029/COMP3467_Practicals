@@ -26,15 +26,15 @@ int main(int argc, char** argv) {
 
     int num_ranks;
     MPI_Comm_size(MPI_COMM_WORLD, &num_ranks);
-    
-    int msg_size;
+
 
     if (rank == 0) {
         char message[] = "Hello World!\n";
-        &msg_size = 14;
+        int msg_size = 14;
         MPI_Send(&message, msg_size, MPI_CHAR, 1, 0, MPI_COMM_WORLD);
         printf("Rank 0 has sent a message to Rank 1\n");
     } else if (rank == 1) {
+        int msg_size;
         MPI_Status status;
         MPI_Probe(0, 0, MPI_COMM_WORLD, &status);
         MPI_Get_count(&status, MPI_INT, &msg_size);
