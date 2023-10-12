@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     int elements_per_rank = N/num_ranks;
     int start_index = elements_per_rank * rank;
     for (int i = start_index; i < (start_index + elements_per_rank); i++) {
-        local_sum += vector[i];
+        local_sum += array[i];
     }
 
     printf("Local sum for process %d is %d.\n", rank, local_sum);
