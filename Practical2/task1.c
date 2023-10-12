@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
         MPI_Status status;
         MPI_Probe(0, 0, MPI_COMM_WORLD, &status);
         MPI_Get_count(&status, MPI_INT, &msg_size);
-        printf("&d", msg_size)
+        printf("&d", msg_size);
 
         char message[64];
         //
