@@ -40,14 +40,15 @@ int main(int argc, char** argv) {
     } else if (rank == 1) {
         MPI_Status status; printf("Line 41 is fine \n");
         MPI_Probe(0, 0, MPI_COMM_WORLD, &status); printf("Line 42 is fine \n");
-        int count;
-        MPI_Get_count(&status, MPI_INT, &count); printf("Line 43 is fine \n");
+        int msg_size;
+        MPI_Get_count(&status, MPI_INT, &msg_size); printf("Line 43 is fine \n");
         printf("%d", count); printf("Line 44 is fine \n");
+        // for some reason msg_size is -32766
 
-        char message[1024]; printf("Line 45 is fine \n");
+        char message[msg_size]; printf("Line 45 is fine \n");
 
         //
-        MPI_Recv(message, count, MPI_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Recv(message, msg_size, MPI_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         printf("Rank 1 has received a message from Rank 0:\n%s",message);
     }
     
