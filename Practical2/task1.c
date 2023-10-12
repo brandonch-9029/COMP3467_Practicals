@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
         MPI_Get_count(&status, MPI_INT, &msg_size); printf("Line 43 is fine \n");
         printf("%d",msg_size);
 
-        char message[64];
+        char message[1024];
 
         //
         MPI_Recv(message, msg_size, MPI_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
