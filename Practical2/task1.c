@@ -41,9 +41,9 @@ int main(int argc, char** argv) {
         MPI_Status status; printf("Line 41 is fine \n");
         MPI_Probe(0, 0, MPI_COMM_WORLD, &status); printf("Line 42 is fine \n");
         MPI_Get_count(&status, MPI_INT, &msg_size); printf("Line 43 is fine \n");
-        printf("%d",msg_size);
+        printf("%d",msg_size); printf("Line 44 is fine \n");
 
-        char message[1024];
+        char message[1024]; printf("Line 45 is fine \n");
 
         //
         MPI_Recv(message, msg_size, MPI_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
