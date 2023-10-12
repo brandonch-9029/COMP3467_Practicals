@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 
     if (rank == 0) {
         char message[] = "Hello World!\n";
-        MPI_Send(&message, message.size(), MPI_CHAR, 1, 0, MPI_COMM_WORLD);
+        MPI_Send(&message, 14, MPI_CHAR, 1, 0, MPI_COMM_WORLD);
         printf("Rank 0 has sent a message to Rank 1")
     } else if (rank == 1) {
         char message[64];
