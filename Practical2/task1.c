@@ -42,6 +42,9 @@ int main(int argc, char** argv) {
         MPI_Probe(0, 0, MPI_COMM_WORLD, &status); printf("Line 42 is fine \n");
         MPI_Get_count(&status, MPI_INT, &msg_size); printf("Line 43 is fine \n");
         printf("%d",msg_size);
+
+        char message[64];
+
         //
         MPI_Recv(message, msg_size, MPI_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         printf("Rank 1 has received a message from Rank 0:\n%s",message);
