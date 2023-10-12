@@ -33,14 +33,9 @@ int main(int argc, char** argv) {
         MPI_Send(&message, 14, MPI_CHAR, 1, 0, MPI_COMM_WORLD);
         printf("Rank 0 has sent a message to Rank 1\n");
     } else if (rank == 1) {
-        int msg_size;
-        MPI_Status status;
-        MPI_Probe(0, 0, MPI_COMM_WORLD, &status);
-        MPI_Get_count(&status, MPI_INT, &msg_size);
-
-        char message[msg_size];
+        char message[64];
         //
-        MPI_Recv(&message, msg_size, MPI_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Recv(&message, 14, MPI_CHAR, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         printf("Rank 1 has received a message from Rank 0:\n%s",message);
     }
     
