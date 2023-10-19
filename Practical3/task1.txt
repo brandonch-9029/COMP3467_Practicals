@@ -19,6 +19,7 @@ a) Use the commandline tool "wget" to download the HPL version 2.3 tarball to NC
 b) Extract the tarball with the commandline tool "tar", and enter the resulting directory.
 
 c) HPL is based on MPI. Therefore, load the relevant MPI module on NCC. 
+module load intel-oneapi/2022.1.2/mpi
 
 d) There are several ways to install HPL (as you can see from the INSTALL file and the availability of different install scripts). 
    For now, please use the GNU Build System incantation:
@@ -28,6 +29,7 @@ d) There are several ways to install HPL (as you can see from the INSTALL file a
 
 e) Find the executable "xhpl" as well as the input file "HPL.dat", and copy the input file into the directory that contains the executable. 
    Please note that HPL will only run successfully if the input file is in the same directory as the executable.
+   these files are in "testing" folder, but should have used a search tool in linux
 
 f) Write an sbatch script "run_hpl.sh" to automatize steps c) to e), and add the mpirun command to run the executable "xhpl" on 4 MPI ranks. 
    Rebuilding the executable on the compute node on which the executable is run is essential since some compute nodes 
