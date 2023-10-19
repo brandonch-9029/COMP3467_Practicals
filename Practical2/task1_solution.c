@@ -31,6 +31,8 @@ int main(int argc, char** argv) {
 
     int num_ranks;
     MPI_Comm_size(MPI_COMM_WORLD, &num_ranks);
+
+    int N = 64;
     
     if(rank == 0)
     {
@@ -40,7 +42,7 @@ int main(int argc, char** argv) {
     
     if(rank == 1)
     {
-        char message[64];
+        char message[N];
         MPI_Status status;
         MPI_Recv(message, N, MPI_CHAR, 0, 0, MPI_COMM_WORLD,&status);
         printf("%s",message);
