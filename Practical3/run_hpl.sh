@@ -14,4 +14,4 @@ make -j 4
 cd testing
 cp ptest/HPL.dat .
 
-mpirun -np 4 ./xhpl
+mpirun ./xhpl
